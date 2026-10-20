@@ -1,0 +1,12 @@
+{
+  "name": "system-design",
+  "version": "1.0.0",
+  "description": "A system design skill: clarify requirements with the client, then design with scale math, failure modes, trade-offs, and verification. Also reviews existing architectures.",
+  "author": {
+    "name": "huongstienstra",
+    "url": "https://github.com/huongstienstra"
+  },
+  "repository": "https://github.com/huongstienstra/system-design-skill",
+  "license": "MIT",
+  "keywords": ["system-design", "architecture", "design-review", "skills"]
+}

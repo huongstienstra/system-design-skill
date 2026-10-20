@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="440" viewBox="0 0 960 440"
+     font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="14" fill="#111827">
+  <rect width="100%" height="100%" fill="#FFFFFF"/>
+  <text x="24" y="36" font-size="18" font-weight="700">NewsFlow: data model (Room)</text>
+
+  <!-- feed_articles -->
+  <rect x="40" y="70" width="250" height="124" rx="6" fill="#FFFFFF" stroke="#4F46E5" stroke-width="1.5"/>
+  <path d="M40,76 a6,6 0 0,1 6,-6 h238 a6,6 0 0,1 6,6 v26 h-250 z" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.5"/>
+  <text x="165" y="92" text-anchor="middle" font-weight="700">feed_articles</text>
+  <g font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12">
+    <text x="52" y="124">PK    feed_key: string</text>
+    <text x="52" y="144">PK FK article_id: string</text>
+    <text x="52" y="164">page: int</text>
+    <text x="52" y="184">position: int</text>
+  </g>
+
+  <!-- feed_cache -->
+  <rect x="40" y="260" width="250" height="104" rx="6" fill="#FFFFFF" stroke="#4F46E5" stroke-width="1.5"/>
+  <path d="M40,266 a6,6 0 0,1 6,-6 h238 a6,6 0 0,1 6,6 v26 h-250 z" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.5"/>
+  <text x="165" y="282" text-anchor="middle" font-weight="700">feed_cache</text>
+  <g font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12">
+    <text x="52" y="314">PK feed_key: string</text>
+    <text x="52" y="334">cached_at: epoch ms</text>
+    <text x="52" y="354">total_results: int</text>
+  </g>
+
+  <!-- articles -->
+  <rect x="350" y="70" width="260" height="244" rx="6" fill="#FFFFFF" stroke="#4F46E5" stroke-width="1.5"/>
+  <path d="M350,76 a6,6 0 0,1 6,-6 h248 a6,6 0 0,1 6,6 v26 h-260 z" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.5"/>
+  <text x="480" y="92" text-anchor="middle" font-weight="700">articles</text>
+  <g font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12">
+    <text x="362" y="124">PK id: string (URL or hash)</text>
+    <text x="362" y="144">title: string</text>
+    <text x="362" y="164">description: string?</text>
+    <text x="362" y="184">author: string?</text>
+    <text x="362" y="204">source_id: string?</text>
+    <text x="362" y="224">source_name: string?</text>
+    <text x="362" y="244">original_url: string?</text>
+    <text x="362" y="264">image_url: string?</text>
+    <text x="362" y="284">published_at: epoch ms?</text>
+    <text x="362" y="304">inserted_at: epoch ms</text>
+  </g>
+
+  <!-- favorites -->
+  <rect x="690" y="70" width="250" height="84" rx="6" fill="#FFFFFF" stroke="#4F46E5" stroke-width="1.5"/>
+  <path d="M690,76 a6,6 0 0,1 6,-6 h238 a6,6 0 0,1 6,6 v26 h-250 z" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.5"/>
+  <text x="815" y="92" text-anchor="middle" font-weight="700">favorites</text>
+  <g font-family="SFMono-Regular, Menlo, Consolas, monospace" font-size="12">
+    <text x="702" y="124">PK FK article_id: string</text>
+    <text x="702" y="144">created_at: epoch ms</text>
+  </g>
+
+  <!-- relations -->
+  <g font-size="12" fill="#374151">
+    <line x1="290" y1="144" x2="350" y2="144" stroke="#374151" stroke-width="1.5"/>
+    <text x="296" y="138">*</text>
+    <text x="340" y="138">1</text>
+    <text x="320" y="162" text-anchor="middle">lists</text>
+
+    <line x1="610" y1="124" x2="690" y2="124" stroke="#374151" stroke-width="1.5"/>
+    <text x="616" y="118">1</text>
+    <text x="684" y="118" text-anchor="end">0..1</text>
+    <text x="650" y="142" text-anchor="middle">saved as</text>
+
+    <line x1="165" y1="194" x2="165" y2="260" stroke="#374151" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <text x="172" y="210">*</text>
+    <text x="172" y="254">1</text>
+    <text x="186" y="232">same feed_key (no foreign key)</text>
+  </g>
+
+  <!-- notes -->
+  <g font-size="12" fill="#374151">
+    <text x="350" y="344">Both foreign keys cascade on delete: removing an article</text>
+    <text x="350" y="362">also removes its feed rows and its favorite.</text>
+    <text x="350" y="380">(feed_key, article_id) is unique, so an article appears once per feed.</text>
+  </g>
+
+  <!-- legend -->
+  <text x="24" y="420" font-size="12" fill="#374151">PK primary key · FK foreign key · ? nullable · * many · dashed line: related by value, not by a foreign key</text>
+</svg>

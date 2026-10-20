@@ -1,0 +1,17 @@
+{
+  "name": "system-design-skill",
+  "owner": {
+    "name": "huongstienstra",
+    "url": "https://github.com/huongstienstra"
+  },
+  "description": "A system design skill for AI coding agents.",
+  "plugins": [
+    {
+      "name": "system-design",
+      "source": "./",
+      "description": "Clarify requirements, then design with scale math, failure modes, trade-offs, and verification. Also reviews existing architectures.",
+      "category": "engineering",
+      "keywords": ["system-design", "architecture", "design-review"]
+    }
+  ]
+}

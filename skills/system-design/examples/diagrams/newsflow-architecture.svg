@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="690" viewBox="0 0 960 690"
+     font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif" font-size="14" fill="#111827">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#374151"/>
+    </marker>
+  </defs>
+  <rect width="100%" height="100%" fill="#FFFFFF"/>
+  <text x="24" y="36" font-size="18" font-weight="700">NewsFlow: architecture</text>
+
+  <!-- client -->
+  <rect x="380" y="70" width="200" height="56" rx="8" fill="#FDF2F8" stroke="#DB2777" stroke-width="1.5"/>
+  <text x="480" y="95" text-anchor="middle" font-weight="600">Compose screens</text>
+  <text x="480" y="114" text-anchor="middle" font-size="12" fill="#374151">Feed, Detail</text>
+
+  <!-- view models and analytics -->
+  <rect x="60" y="200" width="200" height="56" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.5"/>
+  <text x="160" y="225" text-anchor="middle" font-weight="600">FeedViewModel</text>
+  <text x="160" y="244" text-anchor="middle" font-size="12" fill="#374151">feed screen state</text>
+
+  <rect x="380" y="200" width="200" height="56" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.5"/>
+  <text x="480" y="225" text-anchor="middle" font-weight="600">AnalyticsTracker</text>
+  <text x="480" y="244" text-anchor="middle" font-size="12" fill="#374151">interface</text>
+
+  <rect x="700" y="200" width="220" height="56" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.5"/>
+  <text x="810" y="225" text-anchor="middle" font-weight="600">ArticleDetailViewModel</text>
+  <text x="810" y="244" text-anchor="middle" font-size="12" fill="#374151">detail screen state</text>
+
+  <!-- screens to view models -->
+  <line x1="400" y1="126" x2="202" y2="198" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="258" y="152" width="84" height="16" fill="#FFFFFF"/>
+  <text x="300" y="164" text-anchor="middle" font-size="12" fill="#374151">user actions</text>
+  <line x1="560" y1="126" x2="768" y2="198" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="622" y="152" width="84" height="16" fill="#FFFFFF"/>
+  <text x="664" y="164" text-anchor="middle" font-size="12" fill="#374151">user actions</text>
+
+  <!-- view models to analytics -->
+  <line x1="260" y1="228" x2="378" y2="228" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="320" y="220" text-anchor="middle" font-size="12" fill="#374151">track</text>
+  <line x1="700" y1="228" x2="582" y2="228" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="640" y="220" text-anchor="middle" font-size="12" fill="#374151">track</text>
+
+  <!-- analytics to firebase -->
+  <line x1="480" y1="256" x2="480" y2="308" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="490" y="287" font-size="12" fill="#374151">log event</text>
+  <rect x="380" y="310" width="200" height="56" rx="8" fill="#F3F4F6" stroke="#6B7280" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="480" y="335" text-anchor="middle" font-weight="600">Firebase Analytics</text>
+  <text x="480" y="354" text-anchor="middle" font-size="12" fill="#374151">or no-op tracker</text>
+
+  <!-- view models to repository -->
+  <polyline points="160,256 160,452 378,452" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="270" y="444" text-anchor="middle" font-size="12" fill="#374151">load / observe feed</text>
+  <polyline points="810,256 810,452 582,452" fill="none" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="696" y="444" text-anchor="middle" font-size="12" fill="#374151">observe article</text>
+
+  <rect x="380" y="420" width="200" height="64" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.5"/>
+  <text x="480" y="447" text-anchor="middle" font-weight="600">NewsRepository</text>
+  <text x="480" y="467" text-anchor="middle" font-size="12" fill="#374151">owns the cache policy</text>
+
+  <!-- repository to remote and room -->
+  <line x1="440" y1="484" x2="347" y2="538" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="356" y="502" width="70" height="16" fill="#FFFFFF"/>
+  <text x="391" y="514" text-anchor="middle" font-size="12" fill="#374151">fetch page</text>
+  <line x1="520" y1="484" x2="636" y2="526" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="538" y="496" width="84" height="16" fill="#FFFFFF"/>
+  <text x="580" y="508" text-anchor="middle" font-size="12" fill="#374151">read / upsert</text>
+
+  <rect x="240" y="540" width="190" height="56" rx="8" fill="#EEF2FF" stroke="#4F46E5" stroke-width="1.5"/>
+  <text x="335" y="565" text-anchor="middle" font-weight="600">NewsRemoteDataSource</text>
+  <text x="335" y="584" text-anchor="middle" font-size="12" fill="#374151">Retrofit</text>
+
+  <path d="M560,540 a100,12 0 0,0 200,0 a100,12 0 0,0 -200,0 v56 a100,12 0 0,0 200,0 v-56"
+        fill="#ECFDF5" stroke="#059669" stroke-width="1.5"/>
+  <text x="660" y="577" text-anchor="middle" font-weight="600">Room</text>
+  <text x="660" y="595" text-anchor="middle" font-size="12" fill="#374151">4 tables</text>
+
+  <!-- remote to NewsAPI -->
+  <line x1="240" y1="572" x2="146" y2="572" stroke="#374151" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="193" y="550" text-anchor="middle" font-size="12" fill="#374151">GET</text>
+  <text x="193" y="564" text-anchor="middle" font-size="12" fill="#374151">top-headlines</text>
+  <rect x="24" y="540" width="120" height="56" rx="8" fill="#F3F4F6" stroke="#6B7280" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="84" y="565" text-anchor="middle" font-weight="600">NewsAPI</text>
+  <text x="84" y="584" text-anchor="middle" font-size="12" fill="#374151">third party</text>
+
+  <!-- legend -->
+  <g font-size="12" fill="#374151">
+    <rect x="24" y="650" width="18" height="12" rx="3" fill="#FDF2F8" stroke="#DB2777"/>
+    <text x="50" y="660">client</text>
+    <rect x="120" y="650" width="18" height="12" rx="3" fill="#EEF2FF" stroke="#4F46E5"/>
+    <text x="146" y="660">our component</text>
+    <path d="M260,652 a9,3 0 0,0 18,0 a9,3 0 0,0 -18,0 v8 a9,3 0 0,0 18,0 v-8" fill="#ECFDF5" stroke="#059669"/>
+    <text x="286" y="660">data store</text>
+    <rect x="370" y="650" width="18" height="12" rx="3" fill="#F3F4F6" stroke="#6B7280" stroke-dasharray="3 2"/>
+    <text x="396" y="660">external service</text>
+  </g>
+</svg>
